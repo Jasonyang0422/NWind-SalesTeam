@@ -1,0 +1,20 @@
+.region{
+	width: 18%;
+	margin-left: 5%;
+}
+
+#name{
+	margin-bottom: 20px;
+}
+
+#submit{
+	margin-top: 20px;
+}
+
+#clear{
+	clear: both;
+}
+
+#delete{
+	float: right;
+}

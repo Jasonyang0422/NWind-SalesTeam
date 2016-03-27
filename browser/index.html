@@ -3,12 +3,45 @@
 	<head>
 		<title>NWind-SalesTeam</title>
 		<link href='/bower_components/bootstrap/dist/css/bootstrap.css' rel='stylesheet' />
+		<link href='/public/style.css' rel='stylesheet' />
 		<script src='/bower_components/angular/angular.js'></script>
-		<script src='/browser/app.js'></script>
+		<script src='/browser/app.controllers.js'></script>
+		<script src='/browser/app.factory.js'></script>
 	</head>
-	<body>
-		<div class='well container'>
-			Hi
-		</div>
+	<body ng-app='salesTeam'>
+		<div class='container' ng-controller='mainCtrl'>
+			<h2>NWind-SalesTeam</h2>
+			<div class='row'>
+				<div class='col-lg-6'>
+					<div class='panel panel-info'>
+						<div class='panel-heading'>Add a Sales Member</div>
+						<div class='panel-body'>
+							<input ng-model='member.name' id='name' type='text' class='form-control' placeholder='Please enter name'>
+							<button ng-disabled='selectedReg.length === 3 && selectedReg.indexOf(region) === -1' ng-repeat='region in allRegions' ng-click="selectRegion(region)" ng-class="selectedReg.indexOf(region) !== -1? {'btn-primary': true} : {'btn-default': true}" class='btn region'>{{ region }}</button>
+							<br>
+							<button ng-disabled='selectedReg.length === 0 || member.name === null' ng-click='addMember()' id='submit' class='btn btn-primary'>Submit</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class='row'>
+
+				<div class='col-lg-4' ng-repeat='person in members'>
+					<div class='panel' ng-class="person.regions.length === 3? {'panel-success': true} : person.regions.length === 0? {'panel-danger': true} : {'panel-default': true}">
+						<div class='panel-heading'>
+							<span>{{ person.name }}</span>
+							<button ng-click='deleteMember(person._id)' id='delete' ng-disabled='person.regions.length !== 0' class='btn btn-danger btn-xs'>Delete</button>
+							<br id='clear'>
+						</div>
+						<div class='panel-body'>
+							<button ng-repeat='region in allRegions' ng-disabled='person.regions.length === 3 && person.regions.indexOf(region) === -1' ng-click='updateMember(person, region)' ng-class="person.regions.indexOf(region) !== -1? {'btn-primary': true} : {'btn-default': true}" class='btn btn-sm region'>{{region}}</button>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div><!-- container -->
 	</body>
 </html>

@@ -11,7 +11,7 @@ db.connect()
 	return Member.remove();
 })
 .then(function(){
-	return Member.create({name: 'foo', regions: 'north'});
+	return Member.create({name: 'foo', regions: 'North'});
 })
 .then(function(){
 	server.listen(3000, function(){
