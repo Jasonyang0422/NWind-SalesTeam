@@ -1,0 +1,8 @@
+Jason..
+
+- nice work
+- nice clean restful routes
+- add a route for error handling
+- work on naming a little (mainFactory should probably be MemberFactory)
+- export a models property in your db.js (also you can rename it index.js)
+- think about creating client side objects-- would make your life easier..

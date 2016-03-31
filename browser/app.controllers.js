@@ -1,5 +1,7 @@
+//create a file called app.js which will create your app
 var app = angular.module('salesTeam', []);
 
+//name factories and control starting with UpperCase letters.
 app.controller('mainCtrl', function($scope, $log, mainFactory){
 
 	getMembers();
@@ -23,7 +25,7 @@ app.controller('mainCtrl', function($scope, $log, mainFactory){
  	$scope.addMember = function(){
  		mainFactory.postMember($scope.member)
  			.then(function(){
- 				return getMembers();
+ 				return getMembers();//this doesn't make sense... why are you returning it
  			})
  			.then(function(){
  				$scope.member.name = null;
@@ -46,7 +48,7 @@ app.controller('mainCtrl', function($scope, $log, mainFactory){
  				getMembers();
  			})
  			.catch($log.error);
- 	}
+ 	};
 
 
 });

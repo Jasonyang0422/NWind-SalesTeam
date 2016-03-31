@@ -1,3 +1,4 @@
+//this sounds like a SalesTeamFactory-- name things better :)
 angular.module('salesTeam').factory('mainFactory', function($http){
 	var regions = [];
 
@@ -12,6 +13,7 @@ angular.module('salesTeam').factory('mainFactory', function($http){
 	};
 
 	function extractData(response){
+    //what if we looped over the data... and we could create a Member object on the client-- take a look at my solution
 		return response.data;
 	}
 
@@ -24,10 +26,12 @@ angular.module('salesTeam').factory('mainFactory', function($http){
 		return $http.post('/members', member).then(extractData);
 	}
 
+  //i don't know if this needs to be in the factory
 	function addRegion(region){
 		regions.push(region);
 	}
 
+  //i don't know if this needs to be in the factory
 	function removeRegion(region){
 		regions.splice(regions.indexOf(region), 1);
 	}

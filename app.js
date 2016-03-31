@@ -15,4 +15,6 @@ app.use('/members', require('./routes/router'));
 
 app.get('/', function(req, res, next){
 	res.sendFile(__dirname + '/browser/index.html');
-})
+});
+
+//how about an error handling route?
